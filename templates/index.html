@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>เลือกเมนูอาหาร</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #333;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Animated Background */
+        .animated-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ffecd2, #fcb69f, #f8c09a, #e06d6d);
+            background-size: 400% 400%;
+            animation: gradientAnimation 15s ease infinite;
+            z-index: -2;
+        }
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        /* Falling Food animation */
+        .food-fall-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .food-item {
+            position: absolute;
+            opacity: 0;
+            font-size: 20px;
+            animation: foodfall linear infinite;
+        }
+        @keyframes foodfall {
+            0% {
+                transform: translateY(-100px);
+                opacity: 0;
+            }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% {
+                transform: translateY(100vh);
+                opacity: 0;
+            }
+        }
+        .card {
+            border: none;
+            border-radius: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+            background: #fff;
+            padding: 2rem 3rem;
+            animation: bounceIn 1s;
+            z-index: 1;
+        }
+        @keyframes bounceIn {
+            0% { transform: scale(0.3); opacity: 0; }
+            50% { transform: scale(1.05); opacity: 1; }
+            70% { transform: scale(0.9); }
+            100% { transform: scale(1); }
+        }
+        h1 {
+            color: #ff6b6b;
+            font-weight: 800;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        .form-select {
+            border-radius: 15px;
+            padding: 0.75rem 1.25rem;
+            border: 1px solid #ddd;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .form-select:focus {
+            border-color: #ff6b6b;
+            box-shadow: 0 0 0 0.25rem rgba(255, 107, 107, 0.25);
+        }
+        .btn-primary {
+            background: #ff6b6b;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            padding: 0.75rem 2.5rem;
+            transition: transform 0.2s ease, background 0.3s ease;
+        }
+        .btn-primary:hover {
+            background: #ff3b3b;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+        }
+        .label {
+            font-weight: 600;
+            color: #ff6b6b;
+        }
+        /* Style for icons */
+        .label .fa-solid {
+            margin-right: 8px;
+        }
+        /* Style for select options with icons */
+        .select-icon {
+            display: inline-block;
+            margin-right: 5px;
+            width: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<div class="animated-bg"></div>
+<div class="food-fall-container"></div>
+<div class="container">
+    <div class="card p-5 text-center">
+        <h1 class="mb-4 animate__animated animate__fadeInDown"><i class="fas fa-utensils"></i> เลือกเมนูอาหาร</h1>
+        <form action="/result" method="post">
+            <div class="mb-4">
+                <label class="form-label label"><i class="fa-solid fa-pepper-hot"></i> เลือกรสชาติ</label>
+                <select name="taste" class="form-select" required>
+                    <option value="">-- เลือกรสชาติ --</option>
+                    {% for t in tastes %}
+                    <option value="{{ t }}">{{ t }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-4">
+                <label class="form-label label"><i class="fa-solid fa-flag"></i> เลือกประเภทอาหาร</label>
+                <select name="category" class="form-select" required>
+                    <option value="">-- เลือกประเภท --</option>
+                    {% for c in categories %}
+                    <option value="{{ c }}">{{ c }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg animate__animated animate__pulse animate__infinite">
+                🎲 สุ่มเมนู
+            </button>
+        </form>
+    </div>
+</div>
+<script>
+    // Add logic to add icons to the select options
+    document.addEventListener('DOMContentLoaded', () => {
+        const tasteSelect = document.querySelector('select[name="taste"]');
+        const categorySelect = document.querySelector('select[name="category"]');
+
+        const tasteIcons = {
+            'เผ็ด': '🌶️',
+            'หวาน': '🍭',
+            'เค็ม': '🍚',
+        };
+
+        const categoryIcons = {
+            'อาหารไทย': '🇹🇭',
+            'อาหารเกาหลี': '🇰🇷',
+            'อาหารญี่ปุ่น': '🇯🇵',
+            'อาหารฝรั่ง': '🇺🇸',
+        };
+
+        // Add icons to taste options
+        Array.from(tasteSelect.options).forEach(option => {
+            if (option.value in tasteIcons) {
+                option.text = `${tasteIcons[option.value]} ${option.text}`;
+            }
+        });
+
+        // Add icons to category options
+        Array.from(categorySelect.options).forEach(option => {
+            if (option.value in categoryIcons) {
+                option.text = `${categoryIcons[option.value]} ${option.text}`;
+            }
+        });
+    });
+
+    const foodFallContainer = document.querySelector('.food-fall-container');
+    const numberOfFoodItems = 50;
+    const foodItemsChars = ['🍕', '🍔', '🍣', '🍜', '🥗', '🌮', '🥞', '🍩', '🍟', '🍎', '🍓', '🥑'];
+
+    function createFoodItem() {
+        const foodItem = document.createElement('div');
+        foodItem.classList.add('food-item');
+        foodItem.innerHTML = foodItemsChars[Math.floor(Math.random() * foodItemsChars.length)];
+        foodFallContainer.appendChild(foodItem);
+
+        const size = Math.random() * 15 + 10;
+        foodItem.style.fontSize = `${size}px`;
+        foodItem.style.left = `${Math.random() * 100}%`;
+        
+        const duration = Math.random() * 15 + 10;
+        foodItem.style.animationDuration = `${duration}s`;
+        foodItem.style.animationDelay = `${Math.random() * 10}s`;
+
+        foodItem.addEventListener('animationiteration', () => {
+            foodItem.remove();
+            createFoodItem();
+        });
+    }
+
+    for (let i = 0; i < numberOfFoodItems; i++) {
+        createFoodItem();
+    }
+</script>
+</body>
+</html>
