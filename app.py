@@ -14,50 +14,74 @@ foods = {
         ],
         "อาหารเกาหลี": [
             {"name": "บิบิมบับ", "img": "bibimbap.jpg"},
-            {"name": "ซุปกิมจิ", "img": "kimchi_stew.jpg"}
+            {"name": "ซุปกิมจิ", "img": "kimchi_stew.jpg"},
+            {"name": "ไก่ทอดเกาหลี", "img": "korean_fried_chicken.jpg"},
+            {"name":"จาจังมยอน","img":"jajangmyeon.jpg"}
         ],
         "อาหารญี่ปุ่น": [
             {"name": "ราเม็งเผ็ด", "img": "spicy_ramen.jpg"},
-            {"name": "คาราอาเกะราดซอสเผ็ด", "img": "karaage.jpg"}
+            {"name": "คาราอาเกะราดซอสเผ็ด", "img": "karaage.jpg"},
+            {"name": "ยากิโทริ", "img": "yakitori.jpg"},
+            
         ],
         "อาหารฝรั่ง": [
             {"name": "พิซซ่าฮาวายเอี้ยน", "img": "pizza.jpg"},
-            {"name": "สปาเก็ตตี้อาราเบียต้า", "img": "spaghetti_arrabiata.jpg"}
+            {"name": "สปาเก็ตตี้อาราเบียต้า", "img": "spaghetti_arrabiata.jpg"},
+            {"name": "บาร์บีคิวริบส์", "img": "bbq_ribs.jpg"},
+            {"name": "ชิลลี่ด็อก", "img": "chili_dog.jpg"}
         ]
     },
     "หวาน": {
         "อาหารไทย": [
             {"name": "บัวลอย", "img": "bualoy.jpg"},
-            {"name": "ข้าวเหนียวมะม่วง", "img": "mango_sticky_rice.jpg"}
+            {"name": "ข้าวเหนียวมะม่วง", "img": "mango_sticky_rice.jpg"},
+            {"name": "ลอดช่อง", "img": "lodchong.jpg"},
+            {"name": "ขนมครก", "img": "khanom_krok.jpg"}
         ],
   	"อาหารเกาหลี": [
              {"name": "ฮันนี่โทสต์", "img": "honey_toast.jpg"},
+             {"name": "แพนเค้กเกาหลี", "img": "hotteok.jpg"},
+             {"name": "บิงซู", "img": "bingsu.jpg"},
+             {"name": "ขนมต๊อก", "img": "tteok.jpg"}
         ],
 
         "อาหารญี่ปุ่น": [
             {"name": "โมจิ", "img": "mochi.jpg"},
+            {"name": "โดรายากิ", "img": "dorayaki.jpg"},
+            {"name": "พาร์เฟ่ต์ชาเขียว", "img": "matcha_parfait.jpg"},
+            {"name": "ครีมพัฟ", "img": "cream_puff.jpg"}
         ],
         "อาหารฝรั่ง": [
             {"name": "เค้กช็อคโกแลต", "img": "chocolate_cake.jpg"},
-            {"name": "ไอศกรีมวานิลลา", "img": "vanilla_icecream.jpg"}
+            {"name": "ไอศกรีมวานิลลา", "img": "vanilla_icecream.jpg"},
+            {"name": "แพนเค้กกับน้ำผึ้ง", "img": "pancakes_honey.jpg"},
+            {"name": "บราวนี่", "img": "brownie.jpg"}
         ]
     },
     "เค็ม": {
         "อาหารไทย": [
             {"name": "ข้าวคลุกกะปิ", "img": "khao_kluk_kapi.jpg"},
-            {"name": "ผัดซีอิ๊ว", "img": "pad_see_ew.jpg"}
+            {"name": "ผัดซีอิ๊ว", "img": "pad_see_ew.jpg"},
+            {"name": "หมูทอดกระเทียมพริกไทย", "img": "fried_pork_garlic_pepper.jpg"},
+            {"name": "ไข่เจียว", "img": "omelette.jpg"}
         ],
         "อาหารเกาหลี": [
             {"name": "ต๊อกโบกี", "img": "tteokbokki.jpg"},
-            {"name": "คิมบับ", "img": "gimbap.jpg"}
+            {"name": "คิมบับ", "img": "gimbap.jpg"},
+            {"name": "ซุนแด", "img": "sundae.jpg"},
+            {"name": "พาจอน", "img": "pajeon.jpg"}
         ],
         "อาหารญี่ปุ่น": [
             {"name": "ซูชิ", "img": "sushi.jpg"},
-            {"name": "ข้าวหน้าเนื้อ", "img": "gyudon.jpg"}
+            {"name": "ข้าวหน้าเนื้อ", "img": "gyudon.jpg"},
+            {"name": "เทมปุระ", "img": "tempura.jpg"},
+            {"name": "ยากิโซบะ", "img": "yakisoba.jpg"}
         ],
         "อาหารฝรั่ง": [
             {"name": "แฮมเบอร์เกอร์", "img": "burger.jpg"},
-            {"name": "มันฝรั่งทอด", "img": "fries.jpg"}
+            {"name": "มันฝรั่งทอด", "img": "fries.jpg"},
+            {"name": "พิซซ่าเปปเปอโรนี", "img": "pepperoni_pizza.jpg"}
+            
         ]
     }
 }
